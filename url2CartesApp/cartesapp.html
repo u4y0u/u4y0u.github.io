@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Test et redirige vers CartesApp</title>
+    <script>
+        function tstPmx() {
+            const urlParams = new URLSearchParams(window.location.search);
+            console.log(urlParams)
+            const latitude = urlParams.get('lat');
+            const longitude = urlParams.get('lon');
+				console.log(latitude)
+				console.log(longitude)
+            if (latitude && longitude) {
+                const CartesAppUrl = `https://cartes.app/#15.16/${latitude}/${longitude}`;
+					 window.location.href = CartesAppUrl;
+            } else {
+                console.error("Erreur: la 'latitude' et la  'longitude' sont absent.");
+            }
+        }
+
+        window.onload = tstPmx;
+    </script>
+</head>
+<body>
+    <body>
+        <h1>Redirection vers CartesApp</h1>
+        <p>Si vous n'êtes pas redirigé automatiquement, assurez-vous que les paramètres 'latitude' et 'longitude' sont corrects.</p>
+</body>
+</html>
