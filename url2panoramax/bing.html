@@ -2,25 +2,24 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Redirige vers Panoramax à partir d'une url Mapillary</title>
+    <title>Redirige vers Panoramax à partir d'une url OpenStreetMap</title>
     <script>
         function tstPmx() {
             const urlParams = new URLSearchParams(window.location.search);
-            const mapillary = urlParams.get('mapillary');
-            console.log(mapillary)
-            if (mapillary.indexOf("?lat=") !== -1) {
-  		p1 = mapillary.indexOf("lat=");
+            const bing = urlParams.get('bing');
+            console.log(bing)
+            if (bing.indexOf("maps?cp=") !== -1) {
+  		p1 = bing.indexOf("=");
   		console.log(p1)
-  		coord = mapillary.slice(p1);
-  		console.log(coord)
-		p2 = coord.indexOf("&");
+		p2 = bing.indexOf("&");
 		console.log(p2)
-		lonZ = coord.slice(p2+1);
-		console.log(lonZ)
-		p3 = lonZ.indexOf("&");
+  		coord = bing.substring(p1+1,p2);
+  		console.log(coord)
+		p3 = coord.indexOf("%7E");
 		console.log(p3)
-		latitude = coord.substring(4, p2);
-		longitude = lonZ.substring(4,p3);
+	
+		latitude = coord.substring(0, p3);
+		longitude = coord.substring(p3+3);
 		console.log(latitude)
 		console.log(longitude)
 		}
@@ -51,7 +50,7 @@
 </head>
 <body>
     <body>
-        <h1>Redirection vers Panoramax à partir d'une url Mapillary</h1>
+        <h1>Redirection vers Panoramax à partir d'une url Bing map</h1>
         <p>Si vous n'êtes pas redirigé automatiquement, assurez-vous que les paramètres 'lat' et 'lon' sont corrects dans votre url.</p>
 </body>
 </html>
