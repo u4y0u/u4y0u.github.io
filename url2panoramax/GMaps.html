@@ -27,7 +27,9 @@
 		console.log(longitude)
 		}
             if (latitude && longitude) {
-                const apiUrl = `https://api.panoramax.xyz/api/search?place_position=${longitude},${latitude}`;
+               const apiUrl = `https://api.panoramax.xyz/api/search?place_position=${longitude},${latitude}`;
+               var xlat=latitude
+               var ylon=longitude
 		    		var texte = "Latitude Longitude: " + latitude + " " + longitude;
   					document.write(texte);
                 fetch(apiUrl)
@@ -39,12 +41,13 @@
                             window.location.href = panoramaxUrl;
                         } else {
                             const erreurTxt = " Pas de données à ces coordonnées.";
+                            var linkUrl ="https://api.panoramax.xyz/#focus=map&map=18.74/"+xlat+"/"+ylon+"&speed=250&theme=age"
                             console.error(erreurTxt);
-                            document.write(erreurTxt);
+                            document.write(erreurTxt +"<br>Visualiser ces coordonnées sur la <a href= "+ linkUrl+">carte panoramax</a> pour trouver les données les plus proches avec le zoom arrière.");
                         }
                     })
                     .catch(error => {
-                    		const erreurTxt = "Erreur lors de la récupération des données Panoramax";
+                    		const erreurTxt = " Erreur lors de la récupération des données Panoramax";
                         console.error(erreurTxt, error);
                         document.write(erreurTxt);
                     });
