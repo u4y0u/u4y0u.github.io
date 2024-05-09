@@ -28,7 +28,8 @@
 		}
             if (latitude && longitude) {
                 const apiUrl = `https://api.panoramax.xyz/api/search?place_position=${longitude},${latitude}`;
-
+		    		var texte = "Latitude Longitude: " + latitude + " " + longitude;
+  					document.write(texte);
                 fetch(apiUrl)
                     .then(response => response.json())
                     .then(data => {
@@ -37,23 +38,26 @@
                             const panoramaxUrl = `https://api.panoramax.xyz/#focus=pic&pic=${firstFeatureId}`;
                             window.location.href = panoramaxUrl;
                         } else {
-                            console.error("Pas de données à ces coordonnées.");
+                            const erreurTxt = " Pas de données à ces coordonnées.";
+                            console.error(erreurTxt);
+                            document.write(erreurTxt);
                         }
                     })
                     .catch(error => {
-                        console.error("Erreur lors de la récupération des données Panoramax:", error);
+                    		const erreurTxt = "Erreur lors de la récupération des données Panoramax";
+                        console.error(erreurTxt, error);
+                        document.write(erreurTxt);
                     });
             } else {
                 console.error("Erreur: la 'latitude' et la  'longitude' sont absents.");
             }
         }
 
-
+			
         window.onload = redirectToPanoramax;
     </script>
 </head>
 <body>
-    <body>
         <h1>Redirection vers Panoramax à partir d'une url Google Maps</h1>
         <p>Si vous n'êtes pas redirigé automatiquement, assurez-vous que les paramètres 'lat' et 'lon' sont corrects dans votre url.</p>
 </body>
