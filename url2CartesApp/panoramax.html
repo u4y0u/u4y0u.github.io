@@ -2,16 +2,16 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Redirige vers CartesApp à partir d'une url OpenStreetMap</title>
+    <title>Redirige vers CartesApp à partir d'une url Panoramax</title>
     <script>
         function tstCA() {
             const urlParams = new URLSearchParams(window.location.search);
-            const osm = urlParams.get('osm');
-            console.log(osm)
-            if (osm.indexOf("map=") !== -1) {
-  		p1 = osm.indexOf("map=");
+            const panoramax = urlParams.get('panoramax');
+            console.log(panoramax)
+            if (panoramax.indexOf("map=") !== -1) {
+  		p1 = panoramax.indexOf("map=");
   		console.log(p1)
-  		coord = osm.slice(p1);
+  		coord = panoramax.slice(p1);
   		console.log(coord)
 		p2 = coord.indexOf("/");
 		console.log(p2)
@@ -19,8 +19,10 @@
 		console.log(latlon)
 		p3 = latlon.indexOf("/");
 		console.log(p3)
+		p4 = latlon.indexOf("&");
+		console.log(p4)
 		latitude = latlon.substring(0, p3);
-		longitude = latlon.substring(p3+1);
+		longitude = latlon.substring(p3+1,p4);
 		console.log(latitude)
 		console.log(longitude)
 		}
@@ -37,7 +39,7 @@
 </head>
 <body>
     <body>
-        <h1>Redirection vers CartesApp à partir d'une url OSM</h1>
+        <h1>Redirection vers CartesApp à partir d'une url Panoramax</h1>
         <p>Si vous n'êtes pas redirigé automatiquement, assurez-vous que les paramètres 'lat' et 'lon' sont corrects dans votre url.</p>
 </body>
 </html>
