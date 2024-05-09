@@ -8,7 +8,7 @@
             const urlParams = new URLSearchParams(window.location.search);
             const cartesapp = urlParams.get('cartesapp');
             console.log(cartesapp)
-            if (cartesapp.indexOf("/#") !== -1) {
+            if (cartesapp.indexOf("#") !== -1) {
   		p1 = cartesapp.indexOf("#");
   		console.log(p1)
   		coord = cartesapp.slice(p1);
@@ -20,7 +20,16 @@
 		p3 = latlon.indexOf("/");
 		console.log(p3)
 		latitude = latlon.substring(0, p3);
-		longitude = latlon.substring(p3+1);
+		longX = latlon.substring(p3+1);
+		console.log(longX)	
+		p4 = longX.indexOf("/");
+		console.log(p4)
+		if (p4 !== -1) {
+			longitude = longX.substring(0, p4);
+			} else {
+			longitude = longX;
+			}
+		
 		console.log(latitude)
 		console.log(longitude)
 		}
